@@ -16,3 +16,4 @@ yarn-error.log
 .tags
 epslintrc.json
 .tags_swap
+node_modules
