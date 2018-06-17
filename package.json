@@ -1,0 +1,23 @@
+{
+  "name": "fend-project-memory-game-master",
+  "version": "1.0.0",
+  "description": "Udacity Memory Game",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tizzleh/FEND-MemoryGame.git"
+  },
+  "author": "Ty Harlacker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tizzleh/FEND-MemoryGame/issues"
+  },
+  "homepage": "https://github.com/tizzleh/FEND-MemoryGame#readme",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "vex-js": "^4.1.0"
+  }
+}
