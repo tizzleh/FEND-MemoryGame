@@ -1,8 +1,26 @@
 /*
  * Create a list that holds all of your cards
+ * Use abstraction as much as possible.
  */
 
+const ALL_CARDS = ['fa-leaf', // Concatenating saves having to duplicate.
+  'fa-diamond',
+  'fa-bolt',
+  'fa-anchor',
+  'fa-bomb',
+  'fa-paper-plane-o',
+  'fa-cube',
+  'fa-bicycle'
+];
 
+// Set variables, use according to style-guide.
+let moves = 0;
+let currentTime = 0;
+let numSolved = 0;
+let begin = false;
+let visibleCards = [];
+let timer;
+let gameOn = false;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -10,21 +28,18 @@
  *   - add each card's HTML to the page
  */
 
-// Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
+function shuffle(arr) {
+  return arr
+    .map((a) => [Math.random(), a])
+    .sort((a, b) => a[0] - b[0])
+    .map((a) => a[1]);
 }
 
+function populateCards() {
+  shuffle(ALL_CARDS // Shuffle cards
+      .concat(ALL_CARDS)) // Concat cards to duplicate.
+    .forEach(populateCards); // Iterate through cards and append.
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:

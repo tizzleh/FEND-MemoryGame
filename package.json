@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/tizzleh/FEND-MemoryGame#readme",
   "dependencies": {
+    "animate.css": "^3.6.1",
     "jquery": "^3.3.1",
     "vex-js": "^4.1.0"
   }
