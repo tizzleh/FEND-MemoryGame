@@ -89,9 +89,6 @@ function incorrect() {
     removeShakeClass();
   }, 400);
   flippedCards = [];
-  moves++;
-  $('.moves').text(moves);
-  console.log(moves);
 }
 
 
@@ -102,30 +99,8 @@ function correct() {
   flippedCards[1].classList.add('show', 'open', 'match', 'animated', 'pulse');
   flippedCards = [];
   numSolved++;
-  moves++;
-  console.log(moves);
   console.log(numSolved);
-  $('.moves').text(moves);
   isGameWon();
-}
-
-function resetCard() {
-
-  if (this == flippedCards[0] && length == 1) {
-    // let found = flippedCards.find(function(element) {
-    console.log('found ');
-    // this.classList.toggle('open');
-    flippedCards[0].classList.remove('open');
-    flippedCards[0].classList.remove('show');
-    flippedCards = [];
-    // this.classList.toggle('show');
-    // return true;
-    // })
-    // event.preventDefault();
-    console.log('thats the same card');
-    // this.classList.toggle('open');
-    // this.classList.toggle('show');
-  }
 }
 
 function isGameWon() {
@@ -138,48 +113,14 @@ function isGameWon() {
 
 function cardClick(event) {
   let selectedCardClass = this.firstChild.className;
-
   let length = flippedCards.length;
   flippedCards.push(this);
   this.classList.toggle('open');
   this.classList.toggle('show');
-  if (this == flippedCards[0] && length == 1) {
-    // let found = flippedCards.find(function(element) {
-    console.log('found ');
-    // this.classList.toggle('open');
-    flippedCards[0].classList.remove('open');
-    flippedCards[0].classList.remove('show');
-    flippedCards = [];
-    // this.classList.toggle('show');
-    // return true;
-    // })
-    // event.preventDefault();
-    console.log('thats the same card');
-    // this.classList.toggle('open');
-    // this.classList.toggle('show');
-  }
-  // if (flippedCards[0].classList.contains('open')) {
-  // event.preventDefault();
-  // this.classList.toggle('open');
-  // $(this).unbind();
-  // $(this).off();
-  // flippedCards[0].unbind();
-  // flippedCards[0].off();1
-  // flippedCards[0].event.preventfault();
-  // this.classList.toggle('show');
-  // event.stopPropagation();
-  // flippedCards[0].removeEventListener('click', incorrect); // Crude way to keep user from selecting twice
-  // console.log('has class open');
-  // }
-  // flippedCards[0].removeEventListener('click'); // Crude way to keep user from selecting twice
   // this.removeEventListener('click', cardClick); // Crude way to keep user from selecting twice
-  // $('.moves').val(moves);
-  // if (moves % 2 == 0) {
-
-  // }
   if (length == 1) {
     console.log('length = 2');
-    // console.log(flippedCards[0].firstChild.className);
+    console.log(flippedCards[0].firstChild.className);
     if (flippedCards[0].firstChild.className === flippedCards[1].firstChild.className) {
       console.log('matchedSets');
       if (flippedCards[0].id === flippedCards[1].id) {
@@ -197,7 +138,7 @@ function cardClick(event) {
 timer = new Timer();
 timer.start();
 timer.addEventListener('secondsUpdated', function(e) {
-  $('#timer').html(timer.getTimeValues().toString(['minutes', 'seconds']));
+  $('#timer').html(timer.getTimeValues().toString());
 });
 
 // initialize stars display

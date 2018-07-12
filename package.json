@@ -18,6 +18,7 @@
   "homepage": "https://github.com/tizzleh/FEND-MemoryGame#readme",
   "dependencies": {
     "animate.css": "^3.6.1",
+    "easytimer.js": "^2.2.3",
     "jquery": "^3.3.1",
     "sizzle": "^2.3.3",
     "vex-js": "^4.1.0"
