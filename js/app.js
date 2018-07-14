@@ -118,12 +118,10 @@ function resetCard() {
   flippedCards = [];
 }
 
-// let timex = $('#timer').html();
 // Called when 8 pairs of cards have been matched.
 function isGameWon() {
   if (numSolved == 8) {
-    let testTimer = $('#timer').html();
-    // let stars = $('.stars').html();
+    let testTimer = $('#timer').html(); // Crude, but assures same value user sees in timer.
     setTimeout(function() {
       vex.dialog.confirm({
         message: `You won the game with a time of ${testTimer}! You did it in ${moves} moves and ${starLength} star(s) remaining. Do you want to play again?`,
@@ -172,13 +170,14 @@ function initStars() {
   }
 }
 
-// // reduce star rating
+// reduce star rating
 function decStar() {
   let stars = $(".fa-star");
   $(stars[stars.length - 1]).toggleClass("fa-star fa-star-o");
   starLength--;
 }
-// // create individual card element
+
+// create individual card element
 function createCard(cardClass) {
   DECK_EL.append(`<li class="card"><i class="fa ${cardClass}"></i></li>`);
 }
@@ -188,8 +187,8 @@ function populateCards() {
       .concat(ALL_CARDS)) // Concat cards to duplicate.
     .forEach(createCard); // Iterate through cards and append.
 }
-//
-// // increment move count
+
+// increment move count
 function incrementMove() {
   moves++;
   $("#moves").html(moves);
