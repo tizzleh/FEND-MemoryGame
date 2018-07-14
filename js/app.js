@@ -16,17 +16,11 @@ const ALL_CARDS = ['fa-leaf',
 ];
 
 // Set variables, use according to style-guide.
-let moves = 0;
+let moves = 0; // Total pairs of cards clicked
 let flippedCards = [];
-let currentTime = 0;
 let numSolved = 0;
-let begin = false;
 let timer = new Timer();
-let gameOn = false;
-// let timex = timer.getTimeValues().toString()
-let times;
 let starLength = 3;
-// $("#timer").html(currentTime);
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -40,6 +34,7 @@ function shuffle(arr) {
     .sort((a, b) => a[0] - b[0])
     .map((a) => a[1]);
 }
+
 // Remove cards
 function removeCards() {
   DECK_EL.empty();
