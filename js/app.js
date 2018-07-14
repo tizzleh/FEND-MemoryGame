@@ -124,8 +124,6 @@ function isGameWon() {
   if (numSolved == 8) {
     let testTimer = $('#timer').html();
     // let stars = $('.stars').html();
-    console.log(testTimer);
-    console.log(starLength);
     setTimeout(function() {
       vex.dialog.confirm({
         message: `You won the game with a time of ${testTimer}! You did it in ${moves} moves and ${starLength} star(s) remaining. Do you want to play again?`,
@@ -150,18 +148,9 @@ function cardClick(event) {
   timer.start();
   let length = flippedCards.length;
   flippedCards.push(this);
-
-  // if (this.classList.contains('show')) {
-
   this.classList.toggle('open');
   this.classList.toggle('show');
   this.classList.add('disableClick');
-  console.log('contiains open or show');
-  // }
-  // Allow user to reset card without penalty.
-  if (this == flippedCards[0] && length == 1) {
-    resetCard();
-  }
   if (length == 1) {
     if (flippedCards[0].firstChild.className === flippedCards[1].firstChild.className) {
       if (flippedCards[0].id === flippedCards[1].id) {
@@ -176,7 +165,6 @@ function cardClick(event) {
   }
 }
 
-console.log(times);
 // initialize stars display
 function initStars() {
   for (let i = 0; i < 3; i++) {
