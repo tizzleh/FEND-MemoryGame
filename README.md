@@ -18,7 +18,7 @@ A working internet connection and a browser are all that are needed to play this
 
 * [easytimer.js](https://github.com/albert-gonzalez/easytimer.js/) - Timer library
 * [vex.js](https://github.com/HubSpot/vex) - Modal library
-* [annimate.css](https://github.com/daneden/animate.css) - Animation library
+* [animate.css](https://github.com/daneden/animate.css) - Animation library
 * [jQuery](https://github.com/jquery/jquery) - Used to make life easier
 
 ## Contributing
