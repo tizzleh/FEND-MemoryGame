@@ -79,6 +79,7 @@ function incorrect() {
   setTimeout(function() {
     removeShakeClass();
   }, 400);
+  console.log(`correct: ${numSolved}`);
   flippedCards = [];
   incrementMove();
   $('.moves').html(moves); // TODO: Create fix for singular/plural.
@@ -107,6 +108,7 @@ function correct() {
   flippedCards[1].classList.add('show', 'open', 'match', 'animated', 'pulse');
   flippedCards = [];
   numSolved++;
+  console.log(`correct: ${numSolved}`);
   incrementMove();
   $('.moves').html(moves);
   isGameWon();
