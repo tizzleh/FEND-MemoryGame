@@ -2,7 +2,6 @@
 .htmlhintrc
 .stylelintrc
 node_modules
-/node_modules
 ./node_modules
 /public/hot
 /public/storage

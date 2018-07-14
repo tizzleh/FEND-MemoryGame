@@ -8,12 +8,6 @@ Visit the following link to play: [Memory Game](https://tizzleh.github.io/FEND-M
 
 To play click on any card, the timer will begin once the first card is flipped. Click on another card facing downward. If the cards match, they will both remain in the face up position. If you would like to turn a card back down without penalty you may do so simply by clicking on it again.
 
-### Prerequisites
-
-```
-A working internet connection and a browser are all that are needed to play this game. Sorry, no contributions will be merged.
-```
-
 ## Built With
 
 * [easytimer.js](https://github.com/albert-gonzalez/easytimer.js/) - Timer library
