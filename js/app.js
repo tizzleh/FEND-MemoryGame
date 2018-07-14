@@ -192,7 +192,7 @@ function populateCards() {
 function incrementMove() {
   moves++;
   $("#moves").html(moves);
-  if (moves === 12 || moves === 20 || moves === 24) {
+  if (moves === 12 || moves === 18 || moves === 24) {
     decStar();
   }
 }
