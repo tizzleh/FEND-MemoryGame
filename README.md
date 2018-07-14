@@ -24,7 +24,7 @@ This project is a requirement for a Udacity course, no contributions will be acc
 
 ## Authors
 
-* **Udacity** - *Initial work* - [PurpleBooth](https://github.com/udacity)
+* **Udacity** - *Initial work* - [Udacity](https://github.com/udacity)
 * **Ty Harlacker** - *JavaScript* - [tizzleh](https://github.com/tizzleh)
 
 ## License
