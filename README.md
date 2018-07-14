@@ -1,20 +1,38 @@
-# Memory Game Project
+# Udacity's Front-End Nanodegree Memory Game Project.
 
-## Table of Contents
+This is a requirement for the Udacity FEND program. A simple card matching game that relies on memory.
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+## Getting Started
 
-## Instructions
+To play click on any card, the timer will begin once the first card is flipped. Click on another card facing downward. If the cards match, they will both remain in the face up position. If you would like to turn a card back down without penalty you may do so simply by clicking on it again.
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+### Prerequisites
 
-To get started, open `js/app.js` and start building out the app's functionality
+```
+A working internet connection and a browser are all that are needed to play this game. Sorry, no contributions will be merged.
+```
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+## Built With
+
+* [easytimer.js](https://github.com/albert-gonzalez/easytimer.js/) - Timer library
+* [vex.js](https://github.com/HubSpot/vex) - Modal library
+* [jQuery](https://github.com/jquery/jquery) - Used to make life easier
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+This project is a requirement for a Udacity course, no contributions will be accepted.
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+## Authors
+
+* **Udacity** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Ty Harlacker** - *JavaScript* - [tizzleh](https://github.com/tizzleh)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Udacity
+* My parents
+* My project mentor for not letting me stress about deadlines.

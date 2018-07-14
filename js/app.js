@@ -3,16 +3,8 @@
  * Use abstraction as much as possible.
  */
 
-// let card = document.querySelectorAll('li.card');
+// Define constants
 const DECK_EL = $('ul.deck'); // Deck element.
-// const CARD_EL = $('.card'); // Card element.
-// const CARD = $('card').each(function(index) {
-//   console.log(index + ": " + $(this).text());
-// });
-// CARD.on('click', function() {
-//   alert('hello');
-// });
-
 const ALL_CARDS = ['fa-leaf',
   'fa-diamond',
   'fa-bolt',
@@ -29,8 +21,10 @@ let flippedCards = [];
 let currentTime = 0;
 let numSolved = 0;
 let begin = false;
-let timer;
+let timer = new Timer();
 let gameOn = false;
+
+// $("#timer").html(currentTime);
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -44,144 +38,119 @@ function shuffle(arr) {
     .sort((a, b) => a[0] - b[0])
     .map((a) => a[1]);
 }
+// Remove cards
+function removeCards() {
+  DECK_EL.empty();
+}
 
+// Add event listener to each card and call 'cardClick' when clicked.
 function initialize() {
   card = document.getElementsByClassName('card');
-  let cards = [...card]; // We don't know length. ES6 allows this.
+  let cards = [...card]; // We don't know length.
   // Iterate over cards and add event listener.
   for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener('click', cardClick);
   };
 }
+
 window.onload = function() {
-  populateCards();
-  initialize();
+  startGame();
 };
 
+function startGame() {
+  populateCards();
+  initialize();
+  initStars();
+}
+
 function removeShakeClass() {
-  // flippedCards[0].classList.remove('shake');
+  // flippedCards[0].classList.remove('shake');// Why won't this work?
   // flippedCards[1].classList.remove('shake');
   $('.shake').removeClass('shake');
 }
 
 function incorrect() {
-  console.log('incorrect');
-  // if (flippedCards[0].classList.contains('card') {
-  //     // console.log('Contains Class "card"');
-  //   });
-  // if (flippedCards[0].classList.contains('shake') || flippedCards[1].classList.contains('shake')) {
-  //   console.log('Contains shake');
-  //   removeShakeClass();
-  //
-  // }
-  // setTimeout(function() {
-
-  // flippedCards[0].classList.toggle('shake', 'animated');
-  // flippedCards[1].classList.add('shake', 'animated');
-  // }, 400);
-  $('.shake').removeClass('shake');
-  flippedCards[0].classList.remove('show', 'open', 'match');
-  // flippedCards[0].classList.remove('animated', 'shake');
   flippedCards[0].classList.add('animated', 'shake');
   flippedCards[1].classList.add('animated', 'shake');
+  flippedCards[0].classList.remove('show', 'open', 'match');
   flippedCards[1].classList.remove('show', 'open', 'match');
   setTimeout(function() {
     removeShakeClass();
   }, 400);
   flippedCards = [];
-  moves++;
-  $('.moves').text(moves);
-  console.log(moves);
+  incrementMove();
+  $('.moves').html(moves); // TODO: Create fix for singular/plural.
 }
 
+// Reset the game.
+function resetGame() {
+  removeCards();
+  timer.reset();
+  timer.stop();
+  $(".stars").empty();
+  moves = 0;
+  $('.moves').html('0');
+  $('#timer').html('00:00');
+  startGame();
+}
 
+// Reset Game when reset button clicked.
+$('.restart').on('click', function() {
+  resetGame();
+})
+
+// If cards match run 'correct' function.
 function correct() {
-  console.log('correct');
-  console.log(flippedCards[0]);
   flippedCards[0].classList.add('show', 'open', 'match', 'animated', 'pulse');
   flippedCards[1].classList.add('show', 'open', 'match', 'animated', 'pulse');
   flippedCards = [];
   numSolved++;
-  moves++;
-  console.log(moves);
-  console.log(numSolved);
-  $('.moves').text(moves);
+  incrementMove();
+  $('.moves').html(moves);
   isGameWon();
 }
 
 function resetCard() {
-
-  if (this == flippedCards[0] && length == 1) {
-    // let found = flippedCards.find(function(element) {
-    console.log('found ');
-    // this.classList.toggle('open');
-    flippedCards[0].classList.remove('open');
-    flippedCards[0].classList.remove('show');
-    flippedCards = [];
-    // this.classList.toggle('show');
-    // return true;
-    // })
-    // event.preventDefault();
-    console.log('thats the same card');
-    // this.classList.toggle('open');
-    // this.classList.toggle('show');
-  }
+  flippedCards[0].classList.remove('open');
+  flippedCards[0].classList.remove('show');
+  flippedCards = [];
 }
 
+// Called when 8 pairs of cards have been matched.
 function isGameWon() {
-
   if (numSolved == 8) {
-    console.log('You won');
-    alert('you wong')
+    setTimeout(function() {
+      vex.dialog.confirm({
+        message: `You won the game in ${moves} moves. Do you want to play again?`,
+        callback: function(value) {
+          if (value) {
+            resetGame();
+          }
+        }
+      })
+      timer.stop();
+    }, 200)
   }
 }
 
+// Starts timer and begins the counting.
 function cardClick(event) {
   let selectedCardClass = this.firstChild.className;
-
+  // Add event listener to timer.
+  timer.addEventListener('secondsUpdated', function(event) {
+    $('#timer').html(timer.getTimeValues().toString(['minutes', 'seconds']));
+  });
+  timer.start();
   let length = flippedCards.length;
   flippedCards.push(this);
   this.classList.toggle('open');
   this.classList.toggle('show');
+  // Allow user to reset card without penalty.
   if (this == flippedCards[0] && length == 1) {
-    // let found = flippedCards.find(function(element) {
-    console.log('found ');
-    // this.classList.toggle('open');
-    flippedCards[0].classList.remove('open');
-    flippedCards[0].classList.remove('show');
-    flippedCards = [];
-    // this.classList.toggle('show');
-    // return true;
-    // })
-    // event.preventDefault();
-    console.log('thats the same card');
-    // this.classList.toggle('open');
-    // this.classList.toggle('show');
+    resetCard();
   }
-  // if (flippedCards[0].classList.contains('open')) {
-  // event.preventDefault();
-  // this.classList.toggle('open');
-  // $(this).unbind();
-  // $(this).off();
-  // flippedCards[0].unbind();
-  // flippedCards[0].off();1
-  // flippedCards[0].event.preventfault();
-  // this.classList.toggle('show');
-  // event.stopPropagation();
-  // flippedCards[0].removeEventListener('click', incorrect); // Crude way to keep user from selecting twice
-  // console.log('has class open');
-  // }
-  // flippedCards[0].removeEventListener('click'); // Crude way to keep user from selecting twice
-  // this.removeEventListener('click', cardClick); // Crude way to keep user from selecting twice
-  // $('.moves').val(moves);
-  // if (moves % 2 == 0) {
-
-  // }
   if (length == 1) {
-    console.log('length = 2');
-    // console.log(flippedCards[0].firstChild.className);
     if (flippedCards[0].firstChild.className === flippedCards[1].firstChild.className) {
-      console.log('matchedSets');
       if (flippedCards[0].id === flippedCards[1].id) {
         removeShakeClass();
         correct();
@@ -194,12 +163,6 @@ function cardClick(event) {
   }
 }
 
-timer = new Timer();
-timer.start();
-timer.addEventListener('secondsUpdated', function(e) {
-  $('#timer').html(timer.getTimeValues().toString(['minutes', 'seconds']));
-});
-
 // initialize stars display
 function initStars() {
   for (let i = 0; i < 3; i++) {
@@ -207,17 +170,17 @@ function initStars() {
   }
 }
 
-let timerInstance = new Timer();
-console.log();
 // reduce star rating
 function decStar() {
   let stars = $(".fa-star");
   $(stars[stars.length - 1]).toggleClass("fa-star fa-star-o");
 }
+
 // create individual card element
 function createCard(cardClass) {
   DECK_EL.append(`<li class="card"><i class="fa ${cardClass}"></i></li>`);
 }
+
 // Add random classes to each card element.
 function populateCards() {
   shuffle(ALL_CARDS // Shuffle cards
@@ -225,20 +188,9 @@ function populateCards() {
     .forEach(createCard); // Iterate through cards and append.
 }
 
-// starts the timer
-function startTimer() {
-  currentTime += 1;
-  $("#timer").html(currentTime);
-  seconds = setTimeout(startTimer, 1000);
-  if (seconds > 60) {
-    min = seconds / 60;
-    console.log(min);
-  }
-}
-
 // increment move count
 function incrementMove() {
-  moves += 1;
+  moves++;
   $("#moves").html(moves);
   if (moves === 14 || moves === 20) {
     decStar();
