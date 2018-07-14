@@ -121,8 +121,8 @@ function resetCard() {
 // Called when 8 pairs of cards have been matched.
 function isGameWon() {
   if (numSolved === 8) {
-    let testTimer = $('#timer').html(); // Crude, but assures same value user sees in timer.
     setTimeout(function() {
+      let testTimer = $('#timer').html(); // Crude, but assures same value in modal and timer.
       vex.dialog.confirm({
         message: `You won the game with a time of ${testTimer}! You did it in ${moves} moves and ${starLength} star(s) remaining. Do you want to play again?`,
         callback: function(value) {
