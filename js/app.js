@@ -120,7 +120,7 @@ function resetCard() {
 
 // Called when 8 pairs of cards have been matched.
 function isGameWon() {
-  if (numSolved >= 8) {
+  if (numSolved === 8) {
     let testTimer = $('#timer').html(); // Crude, but assures same value user sees in timer.
     setTimeout(function() {
       vex.dialog.confirm({
