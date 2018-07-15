@@ -145,9 +145,9 @@ function cardClick(event) {
   timer.start();
   let length = flippedCards.length;
   flippedCards.push(this);
-  this.classList.add('open');
-  this.classList.add('show');
-  this.classList.add('disableClick');
+  // this.classList.add('open');
+  this.classList.add('show', 'open', 'disableClick');
+  // this.classList.add('disableClick');
   if (length == 1) {
     if (flippedCards[0].firstChild.className === flippedCards[1].firstChild.className) {
       if (flippedCards[0].id === flippedCards[1].id) {
