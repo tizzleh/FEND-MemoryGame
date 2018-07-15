@@ -75,6 +75,7 @@ function incorrect() {
     removeShakeClass();
   }, 400);
   flippedCards = [];
+  $('#deck').removeClass('disable-click');
   incrementMove();
   $('.moves').html(moves); // TODO: Create fix for singular/plural.
 }
@@ -104,6 +105,7 @@ function correct() {
   flippedCards[1].classList.add('show', 'open', 'match', 'animated', 'pulse');
   flippedCards = [];
   numSolved++;
+  $('#deck').removeClass('disable-click');
   incrementMove();
   $('.moves').html(moves);
   isGameWon();
@@ -126,8 +128,10 @@ function isGameWon() {
     }, 200)
   }
 }
-
-// Starts timer and begins the counting.
+/**
+ * @description Handles click event on card to begin game
+ * @param {event} event
+ */
 function cardClick(event) {
   let selectedCardClass = this.firstChild.className;
   // Add event listener to timer.
@@ -141,11 +145,18 @@ function cardClick(event) {
   if (length == 1) {
     if (flippedCards[0].firstChild.className === flippedCards[1].firstChild.className) {
       if (flippedCards[0].id === flippedCards[1].id) {
-        removeShakeClass();
-        correct();
+        $('#deck').addClass('disable-click');
+        setTimeout(function() {
+
+          removeShakeClass();
+
+          correct();
+        }, 400)
       }
     } else {
+      $('#deck').addClass('disable-click');
       setTimeout(function() { // Card flips too quickly to see without timeout.
+        // $('#deck').addClass('disable-click');
         incorrect();
       }, 400);
     }
