@@ -86,7 +86,9 @@ function resetGame() {
   timer.reset();
   timer.stop();
   $(".stars").empty();
+  numSolved = 0;
   moves = 0;
+  starLength = 3;
   $('.moves').html('0');
   $('#timer').html('00:00');
   startGame();
