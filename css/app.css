@@ -101,7 +101,7 @@ h1 {
   display: inline-block;
 }
 
-.disableClick {
+.disable-click {
   pointer-events: none;
 }
 
