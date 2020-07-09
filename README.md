@@ -1,4 +1,4 @@
-# Udacity's Front-End Nanodegree Memory Game Project.
+# Front-End Nanodegree Memory Game Project.
 
 This is a requirement for the Udacity FEND program. A simple card matching game that relies on memory.
 
