@@ -1,4 +1,4 @@
-# Front-End Nanodegree Memory Game Project.
+# Memory Game Project
 
 This is a requirement for the Udacity FEND program. A simple card matching game that relies on memory.
 
@@ -32,4 +32,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 * Udacity
 * My parents
-* My project mentor for not letting me stress about deadlines.
+* Google for the scholarship
