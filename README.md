@@ -4,7 +4,7 @@ This is a requirement for the Udacity FEND program. A simple card matching game 
 
 ## Getting Started
 
-Visit the following link to play: [Memory Game](https://tizzleh.github.io/FEND-MemoryGame/)
+Visit the following link to play: [Memory Game](https://tizzleh.github.io/Memory-Game/)
 
 To play click on any card, the timer will begin once the first card is flipped. Click on another card facing downward. If the cards match, they will both remain in the face up position. If you would like to turn a card back down without penalty you may do so simply by clicking on it again.
 
